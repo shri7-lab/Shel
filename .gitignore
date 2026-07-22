@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+config/settings.json
+~/.shel/config.json
+*.log
+payloads/
+.env
+venv/
+.venv/
