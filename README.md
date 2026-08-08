@@ -1,5 +1,12 @@
 # Shel — Autonomous AI Pentesting Agent
 
+[![CI](https://github.com/shri7-lab/Shel/actions/workflows/ci.yml/badge.svg)](https://github.com/shri7-lab/Shel/actions)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](.github/CONTRIBUTING.md)
+[![Contributors](https://img.shields.io/github/contributors/shri7-lab/Shel)](https://github.com/shri7-lab/Shel/graphs/contributors)
+[![Stars](https://img.shields.io/github/stars/shri7-lab/Shel)](https://github.com/shri7-lab/Shel/stargazers)
+
 **Shel** is a multi-agent autonomous pentesting AI that combines LLM-driven reasoning with a modular arsenal of specialized attack modules. It operates as an interactive REPL with a full dashboard, supporting autonomous goal-driven decision loops, multi-agent swarm coordination, polymorphic evasion, supply chain poisoning, social engineering campaigns, steganography, covert C2 channels, and continuous Q-learning—all from the command line.
 
 ```
@@ -573,6 +580,19 @@ The learner database is at `~/.shel/learner.db` (SQLite).
 | `modules/payloads/generator.py` | 164 | Payload generator |
 | `benchmark/runner.py` | 95 | Challenge benchmark |
 | **Total** | **~25,000** | **50 Python files** |
+
+---
+
+## Contributing
+
+Contributions are what make open source great. Whether it's a new exploit module, a bug fix, docs, or a creative test scenario — we want it.
+
+- Read **[CONTRIBUTING.md](.github/CONTRIBUTING.md)** first — it has the setup, style guide, and PR checklist
+- Grab a **[good first issue](https://github.com/shri7-lab/Shel/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)** if you're new here
+- Found a vulnerability in Shel itself? Use our **[Security Policy](.github/SECURITY.md)** — report privately
+- All interactions follow our **[Code of Conduct](.github/CODE_OF_CONDUCT.md)**
+
+> **Responsible use:** Shel is for authorized security testing only. Only test systems you own or have written permission to test.
 
 ---
 
