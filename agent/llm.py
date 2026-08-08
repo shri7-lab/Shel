@@ -52,10 +52,15 @@ class LLM:
             data=data,
             headers={"Content-Type": "application/json"},
         )
-        with urllib.request.urlopen(req, timeout=120) as resp:
+        with urllib.request.urlopen(req, timeout=900) as resp:
             result = json.loads(resp.read())
 
         return OllamaResponse(result, tools)
+
+    def _block_text(self, c):
+        if isinstance(c, dict):
+            return c.get("text", "")
+        return getattr(c, "text", "")
 
     def _format_for_ollama(self, system, messages, tools):
         formatted = [{"role": "system", "content": system}]
@@ -78,17 +83,14 @@ class LLM:
                 content = msg.get("content", "")
                 if isinstance(content, list):
                     text_parts = [
-                        c.get("text", "") for c in content if c.get("type") == "text"
+                        self._block_text(c) for c in content
                     ]
                     content = "\n".join(text_parts)
                 formatted.append({"role": "user", "content": content})
             elif msg["role"] == "assistant":
                 content = msg.get("content", "")
                 if isinstance(content, list):
-                    text_parts = []
-                    for c in content:
-                        if c.get("type") == "text":
-                            text_parts.append(c.get("text", ""))
+                    text_parts = [self._block_text(c) for c in content]
                     content = "\n".join(text_parts)
                 formatted.append({"role": "assistant", "content": content})
 

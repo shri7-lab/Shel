@@ -6,9 +6,15 @@ dist/
 build/
 
 config/settings.json
+config.json
 ~/.shel/config.json
 *.log
 payloads/
 .env
 venv/
 .venv/
+*.db
+history.txt
+tools/
+*.exe
+*.zip

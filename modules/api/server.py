@@ -47,6 +47,23 @@ class ToolRequest(BaseModel):
     args: dict = {}
 
 
+def _serialize_messages(messages):
+    out = []
+    for msg in messages:
+        m = dict(msg)
+        content = m.get("content")
+        if isinstance(content, list):
+            parts = []
+            for c in content:
+                if isinstance(c, dict):
+                    parts.append(c.get("text", ""))
+                else:
+                    parts.append(getattr(c, "text", ""))
+            m["content"] = "\n".join(parts)
+        out.append(m)
+    return out
+
+
 def init_shel():
     cfg = load_config()
     api_key = None
@@ -198,7 +215,7 @@ async def chat(req: ChatRequest):
 
         return JSONResponse({
             "blocks": response_blocks,
-            "messages": msg_list[-10:],
+            "messages": _serialize_messages(msg_list[-10:]),
         })
 
 
